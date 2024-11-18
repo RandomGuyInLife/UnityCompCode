@@ -17,6 +17,9 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
+double squareSizeInches = 23;
+
+
 void pre_auton(void) {
 
   // All activities that occur before the competition starts
@@ -43,7 +46,16 @@ void DBUp(void) {
 
 void autonomous(void) {
   // ..........................................................................
-  Hook.spinFor(reverse, 1, seconds, 50, vex::velocityUnits::pct);
+  drive.driveFor(squareSizeInches * 1.5, inches);
+  drive.turnFor(180, deg);
+  Piston1.set(true);
+  drive.turnFor(left, 95, deg);
+  Hook.spinFor(-50, deg, false);
+  drive.driveFor(squareSizeInches, inches);
+  Hook.spinFor(forward, 270, deg, 100, velocityUnits::pct, false);
+  Preintake.spinFor(2, seconds);
+  drive.turnFor(left, 90, deg);
+  drive.driveFor(squareSizeInches * 1.3, inches);
   // ..........................................................................
 }
 
