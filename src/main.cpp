@@ -44,17 +44,6 @@ void DBUp(void) {
 void autonomous(void) {
   // ..........................................................................
   Hook.spinFor(reverse, 1, seconds, 50, vex::velocityUnits::pct);
-  drive.driveFor(36, inches);
-  drive.driveFor(1, inches, false);
-  Preintake.spinFor(180, deg, false);
-  Hook.spinFor(forward, 2, seconds, 50, vex::velocityUnits::pct);
-  drive.turnFor(-45, degrees);
-  drive.driveFor(-12, inches);
-  drive.turnFor(90, degrees);
-  drive.driveFor(12, inches);
-  drive.turnFor(-90, degrees);
-  drive.driveFor(-6, inches);
-  Hook.spinFor(forward, 2, seconds, 100, vex::velocityUnits::pct);
   // ..........................................................................
 }
 
