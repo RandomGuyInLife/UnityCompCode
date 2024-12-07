@@ -46,7 +46,7 @@ void DBUp(void) {
 
 void autonomous(void) {
   // ..........................................................................
-  drive.driveFor(squareSizeInches * 1.5, inches);
+  drive.driveFr(squareSizeInches * 1.5, inches);
   drive.turnFor(180, deg);
   Piston1.set(true);
   drive.turnFor(left, 95, deg);
