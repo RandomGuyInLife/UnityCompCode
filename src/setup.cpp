@@ -24,6 +24,7 @@ drivetrain drive = drivetrain(L, R);
 
 digital_out Piston1 = pneumatics(Brain.ThreeWirePort.A);
 digital_out Piston2 = pneumatics(Brain.ThreeWirePort.B);
+digital_out Piston3 = pneumatics(Brain.ThreeWirePort.H);
 
 motor Hook = motor(PORT12);
 motor Preintake = motor(PORT11);

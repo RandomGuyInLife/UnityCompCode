@@ -44,27 +44,34 @@ void DBUp(void) {
   Piston2.set(false);
 }
 
+void CLDown(void) {
+  Piston3.set(true);
+}
+
+void CLUp(void) {
+  Piston3.set(false);
+}
+
 void autonomous(void) {
   // ..........................................................................
-  drive.driveFr(squareSizeInches * 1.5, inches);
-  drive.turnFor(180, deg);
-  Piston1.set(true);
-  drive.turnFor(left, 95, deg);
-  Hook.spinFor(-50, deg, false);
-  drive.driveFor(squareSizeInches, inches);
-  Hook.spinFor(forward, 270, deg, 100, velocityUnits::pct, false);
-  Preintake.spinFor(2, seconds);
-  drive.turnFor(left, 90, deg);
-  drive.driveFor(squareSizeInches * 1.3, inches);
+  drive.driveFor(reverse, 24, inches);
+  pressedPnueDown();
+  drive.turnFor(92, deg, true);
+  drive.driveFor(12, inches);
+  Preintake.spinFor(360, deg, 100, velocityUnits::pct, false);
+  Hook.spinFor(360, deg, 100, velocityUnits::pct, false);
+  drive.driveFor(6, inches);
   // ..........................................................................
 }
 
 void usercontrol(void) {
   Control.ButtonL1.pressed(pressedPnueDown);
   Control.ButtonL2.pressed(pressedPnueUp);
-  //Control.ButtonX.pressed(DBDown);
-  //Control.ButtonX.pressed(DBUp);
-  Brain.Screen.setPenColor(0xFF0000);
+  Control.ButtonY.pressed(CLUp);
+  Control.ButtonB.pressed(CLDown);
+  Control.ButtonX.pressed(DBDown);
+  Control.ButtonA.pressed(DBUp);
+  Brain.Screen.setPenColor(000000);
   // User control code here, inside the loop
   while (1) {
     int LeftPower = Control.Axis3.position(pct) + Control.Axis1.position(pct); // Port 3 first (-)
